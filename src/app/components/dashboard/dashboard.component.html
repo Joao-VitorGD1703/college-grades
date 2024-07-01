@@ -1,0 +1,92 @@
+<div class="container-fluid m-0 p-0 d-flex flex-row">
+  <app-sidebar></app-sidebar>
+  <div class="container w-75">
+    <form class="" [formGroup]="provaForm" (ngSubmit)="listarProvas(materiaId)">
+      <div class="container w-100 my-5 row d-flex justify-content-end align-items-end">
+        <div class="col-5">
+          <select class="form-select" id="inputGroupSelect01" formControlName="materia"
+            (change)="updateMateriaId($event)">
+            <option selected>Matéria</option>
+            <option value="1">ANDROID KOTLIN DEVELOPER</option>
+            <option value="2">DESENVOLVIMENTO CROSS PLATFORM</option>
+            <option value="3">GOVERNANÇA E MELHORES PRÁTICAS EM TI</option>
+            <option value="4">MICROSERVICE AND WEB ENGINEERING</option>
+            <option value="5">NETWORK MANAGEMENT AND MONITORING</option>
+            <option value="6">OPERATING SYSTEM TUNING AND COGNATION</option>
+            <option value="7">PROGRAMMING AND DATABASE MANAGEMENT</option>
+          </select>
+        </div>
+        <div class="mt-3 col-1 mx-0">
+          <button type="submit" class="btn btn-primary btn">Salvar</button>
+        </div>
+      </div>
+    </form>
+    <div class="container w-100 d-flex row ">
+      @for(item of dataGrades; track $index){
+      <div class="card text-bg-primary col-lg-3 col-md-6 mx-auto my-2  h-auto" style="width: 15em;">
+        <div class="card-header">Media Check Point</div>
+        <div class="card-body d-flex flex-row justify-content-around">
+          <h2>{{item.cp}}</h2>
+          <h2>CP</h2>
+        </div>
+      </div>
+      <div class="card text-bg-primary col-lg-3 col-md-6  mx-auto my-2   h-auto" style="width: 15em;">
+        <div class="card-header">Media Sprints solution</div>
+        <div class="card-body d-flex flex-row justify-content-around">
+          <h2>{{item.sp}}</h2>
+          <h2>SP</h2>
+        </div>
+      </div>
+         <div class="card text-bg-primary col-lg-3 col-md-6  mx-auto my-2   h-auto" style="width: 15em;">
+        <div class="card-header">Media Global solution</div>
+        <div class="card-body d-flex flex-row justify-content-around">
+          <h2>{{item.gs}}</h2>
+          <h2>GS</h2>
+        </div>
+      </div>
+      <div class="card text-bg-primary col-lg-3 col-md-6 mx-auto my-2   h-auto" style="width: 15em;">
+        <div class="card-header">Media necessaria</div>
+        <div class="card-body d-flex flex-row justify-content-around">
+          <h2>-</h2>
+          <h2>MD</h2>
+        </div>
+      </div>
+      <div class="card text-bg-primary col-lg-3 col-md-6 mx-auto my-2   h-auto" style="width: 15em;">
+        <div class="card-header">Media atinginda</div>
+        <div class="card-body d-flex flex-row justify-content-around">
+          <h2>{{item.fn}}</h2>
+          <h2>FN</h2>
+        </div>
+      </div>
+      }
+
+    </div>
+    <div class="container w-100">
+
+
+      <div class="container w-100 mt-5 border">
+        <table class="table mt-5 table-striped">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Matéria</th>
+              <th scope="col">Nota</th>
+              <th scope="col">Tipo de Prova</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (item of filteredProvas; track $index){
+            <tr>
+              <th scope="row">{{item.id}}</th>
+              <td>{{item.materia.nome}}</td>
+              <td>{{item.nota}}</td>
+              <td>{{item.tipo}}</td>
+            </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <app-grafico-materias></app-grafico-materias>
+  </div>
+</div>
